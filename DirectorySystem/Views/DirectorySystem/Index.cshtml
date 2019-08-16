@@ -1,0 +1,32 @@
+﻿@model DirectorySystem.ViewModels.DirectorySystemIndexViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @if (Model.Errors.Any())
+    {
+        foreach (var error in Model.Errors)
+        {
+            <p>@error</p>
+        }
+    }
+    else
+    {
+        <h2>Folder: @Model.Node.Name</h2>
+        <div>
+            @foreach (var child in Model.Node.Children)
+            {
+                <p><a href="@(Model.Url + child.Name)">@child.Name</a></p>
+            }
+        </div>
+    }
+</body>
+</html>
